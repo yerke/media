@@ -983,10 +983,16 @@ impl MediaInstance for GStreamerPlayer {
     }
 
     fn suspend(&self) -> Result<(), ()> {
+        let is_paused = self.paused();
+        println!("Yerke: suspend: is_paused: {}", is_paused);
+
         self.pause().map_err(|_| ())
     }
 
     fn resume(&self) -> Result<(), ()> {
+        let is_paused = self.paused();
+        println!("Yerke: resume: is_paused: {}", is_paused);
+
         self.play().map_err(|_| ())
     }
 }
